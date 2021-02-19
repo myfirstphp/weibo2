@@ -1,38 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bootstrap 实例</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
-    <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
-    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <title>菜鸟教程(runoob.com)</title>
+    <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <!-- Brand/logo -->
-    <a class="navbar-brand" href="/">Logo</a>
-
-    <!-- Links -->
-    <ul class="navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link 1</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link 2</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link 3</a>
-        </li>
-    </ul>
-</nav>
-
-<div class="container-fluid">
-    <h3>品牌/Logo</h3>
-    <p>.navbar-brand 类用于高亮显示品牌/Logo:</p>
+<div class='container' style="background-color:#222; width:200px; height:200px;">
+    <p>div1</p>
+</div>
+<div class="float-left">
+    <p>div2</p>
 </div>
 
+<div class="float-right">
+    <p>div3</p>
+</div>
 </body>
 </html>
