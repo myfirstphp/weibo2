@@ -6,16 +6,8 @@
     <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
-
-<div class='container' style="background-color:#222; width:200px; height:200px;">
-    <p>div1</p>
-</div>
-<div class="float-left">
-    <p>div2</p>
-</div>
-
-<div class="float-right">
-    <p>div3</p>
-</div>
+<a href="#">我</a>
+<a href="#">在</a>
+<img src="https://cdn.learnku.com/uploads/sites/KDiyAbV0hj1ytHpRTOlVpucbLebonxeX.png"img>
 </body>
 </html>
