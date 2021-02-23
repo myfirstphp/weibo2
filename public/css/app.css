@@ -10962,3 +10962,9 @@ section.user_info h1 {
   border-radius: 50%;
 }
 
+.bg_img {
+  background: url(/images/img1.jpg?4fe6ecef6b846d979ec010ba1ddc69be) no-repeat center fixed;
+  background-size:contain;
+  opacity: 0.4;
+}
+

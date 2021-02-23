@@ -8,10 +8,12 @@
 <body>
   @include('layouts._header')
 
+  <div class="bg_img">
 
-  <div class="container offset-md-1 col-md-10">
-      @yield('content')
-      @include('layouts._footer')
+      <div class="container offset-md-2 col-md-8">
+          @yield('content')
+          @include('layouts._footer')
+      </div>
   </div>
 </body>
 </html>

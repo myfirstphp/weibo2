@@ -2,5 +2,38 @@
 @section('title', '注册')
 
 @section('content')
-    <h1>注册</h1>
+  <div class="offset-md-2 col-md-3">
+      <div class="card">
+          <div class="card-header">
+              <h5 align="center">注册</h5>
+          </div>
+          <div class="card-body">
+              <form method="post" action="{{ route('users.store') }}">
+                  <div class="form-group">
+                      <label for="name">名称：</label>
+                      <input class="form-control" id="name" name="name" type="text" value="{{ old('name') }}">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="email">邮箱：</label>
+                      <input class="form-control" id="email" name="email" type="text" value="{{ old('email') }}">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="password">密码：</label>
+                      <input class="form-control" id="password" name="password" type="password" value="{{ old('password') }}">
+                  </div>
+
+                  <div class="form-group">
+                      <label for="password_confirmation">确认密码：</label>
+                      <input class="form-control" id="password_confirmation" name="password_confirmation" type="password" value="{{ old('password_confirmation') }}">
+                  </div>
+                  <div style="text-align:center">
+                      <button class="btn btn-primary" type="submit">注册</button>
+                  </div>
+
+              </form>
+          </div>
+      </div>
+  </div>
 @stop
