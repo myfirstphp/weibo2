@@ -11,6 +11,7 @@
   <div class="bg_img">
 
       <div class="container offset-md-2 col-md-8">
+          @include('shared._message')
           @yield('content')
           @include('layouts._footer')
       </div>
