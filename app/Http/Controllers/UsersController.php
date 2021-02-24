@@ -21,7 +21,7 @@ class UsersController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|unique:users|max:10',
-            'email'=>'required|unique:users|email',
+            'email'=>'required|unique:users|email',//这个邮箱验证很拉跨，仅仅验证了有没有加@
             'password'=>'required|min:6|max:12|confirmed'
         ]);
         return;
