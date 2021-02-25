@@ -1,5 +1,9 @@
-<?php
-use Illuminate\Http\Request;
+<!DOCTYPE html>
+<html>
+<head>
 
-$foo = new ReflectionClass('Request');
-echo $foo->getFileName();
+</head>
+<body>
+<p>{{ $credentials }}</p>
+</body>
+</html>
