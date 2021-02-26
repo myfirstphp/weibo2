@@ -1,9 +1,30 @@
-<nav class="navbar navbar-expand-lg bg-dark navbar-dark">
-    <div class="container col-md-12">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container offset-md-0 col-md-12">
         <a class="navbar-brand" href="{{ route('home') }}">Weibo App</a>
         <ul class="navbar-nav justify-content-end">
-            <li class="nav-item"><a class="nav-link" href="{{ route('help') }}">帮助</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">登录</a></li>
+            @if(Auth::check())
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="navbarDropdown" aria-haspopup="true" aria-expanded="false" href="#">
+                        {{ Auth::user()->name }}
+                    </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ route('users.show', Auth::user()->id) }}">个人中心</a>
+                    <a class="dropdown-item" href="#">编辑资料</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" id="logout" href="#">
+                        <form method="post" action="{{ route('logout') }}">
+                            {{ csrf_field() }}
+                            {{ method_field('delete') }}
+                            <buttton class="btn btn-block btn-danger" name="button" type="submit">退出</buttton>
+                        </form>
+                    </a>
+                </div>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="#">用户列表</a></li>
+            @else
+                <li class="nav-item"><a class="nav-link" href="{{ route('help') }}">帮助</a></li>
+                <li class="nav-item" ><a class="nav-link" href="{{ route('login') }}">登录</a></li>
+            @endif
         </ul>
     </div>
 </nav>

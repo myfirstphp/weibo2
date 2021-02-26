@@ -7,14 +7,12 @@
 </head>
 <body>
   @include('layouts._header')
-
-  <div class="bg_img">
-
-      @include('shared._message')
-      <div class="container offset-md-2 col-md-8">
-          @yield('content')
-          @include('layouts._footer')
-      </div>
+  @include('shared._message')
+  <div class="container offset-md-2 col-md-8">
+      @yield('content')
+      @include('layouts._footer')
   </div>
+
+  <script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>
