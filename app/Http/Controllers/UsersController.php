@@ -6,9 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\User;
 //验证规则类
 use Illuminate\Validation\Rule;
+use Auth;
+
 
 class UsersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth', [
+            'except' => ['create', 'store'],
+        ]);
+
+        $this->middleware('guest', [
+            'only' => ['create'],
+        ]);
+    }
+
     public function create()
     {
         return view('users.create');
@@ -23,8 +37,8 @@ class UsersController extends Controller
     {
         $this->validate($request, [
             'name' => 'required|unique:users|max:10',
-            'email'=>'required|unique:users|email',//这个邮箱验证很拉跨，仅仅验证了有没有加@
-            'password'=>'required|min:6|max:12|confirmed',
+            'email' => 'required|unique:users|email',//这个邮箱验证很拉跨，仅仅验证了有没有加@
+            'password' => 'required|min:6|max:12|confirmed',
         ]);
 
         $user = User::create([
@@ -33,22 +47,24 @@ class UsersController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
-        Auth::login($user);
+        Auth::login($user);//让已通过认证的用户实例登录
         session()->flash('success','欢迎，旅程现在开始');
         return redirect()->route('users.show', $user->id);
     }
 
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
         return view('users.edit', compact('user'));
     }
 
 
     public function update(User $user, Request $request)
     {
+        $this->authorize('update', $user);
         $this->validate($request,[
             "name" => ['required', Rule::unique('users')->ignore($user), "max:6"],
-            'password' => 'nullable|min:6|confirmed'
+            'password' => 'nullable|min:6|confirmed',
         ]);
 
         $data = [];

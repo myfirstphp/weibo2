@@ -9,9 +9,13 @@
                     <h5 align="center">注册</h5>
                 </div>
                 <div class="card-body">
+
                 @include('shared._errors')<!--这个位置可以随便放，只是错误信息显示的位置-->
+
                     <form method="post" action="{{ route('users.store') }}">
+
                         {{ csrf_field() }}
+
                         <div class="form-group">
                             <label for="name">名称：</label>
                             <input class="form-control" id="name" name="name" type="text" value="{{ old('name') }}">
