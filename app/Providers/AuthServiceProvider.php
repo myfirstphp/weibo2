@@ -12,6 +12,7 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @var array
      */
+    //这里是手动注册，(e.x 'App\Models\User' => 'App\Policies\UserPolicy') 我们现在采用的是自动注册
     protected $policies = [
         // 'App\Model' => 'App\Policies\ModelPolicy',
     ];

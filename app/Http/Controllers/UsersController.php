@@ -16,11 +16,11 @@ class UsersController extends Controller
     {
         $this->middleware('auth', [
             'except' => ['create', 'store'],
-        ]);
+        ]);//auth 是对未登录用户的限制
 
         $this->middleware('guest', [
             'only' => ['create'],
-        ]);
+        ]);//guest 是对登录用户的限制
     }
 
     public function create()
@@ -77,7 +77,12 @@ class UsersController extends Controller
         session()->flash('success', '修改用户信息成功');
 
         return redirect()->route('users.show', [$user->id]);
+    }
 
+    public function index()
+    {
+        $users = User::paginate(10);
+        return view('users.index', compact('users'));
     }
 }
 
