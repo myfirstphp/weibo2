@@ -4,7 +4,7 @@
         {{ $user->name }}
     </a>
     @can('destroy', $user)
-        <form method="post" action="{{ route('users.destroy', $user) }}" class="float-right">
+        <form method="post" action="{{ route('users.destroy', [$user->id]) }}" class="float-right">
             {{ csrf_field() }}
             {{ method_field('delete') }}
             <button class="btn btn-sm btn-danger delete-btn" type="submit">删除</button>
