@@ -1,4 +1,4 @@
-@foreach(['success', 'danger', 'info', 'warning'] as $msg)
+@foreach(['success', 'danger', 'info', 'warning', 'success0', 'success1', 'success2'] as $msg)
     @if(session()->has($msg))
         @if($msg == 'success')
             <div class="offset-md-2 col-md-8">

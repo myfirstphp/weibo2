@@ -31,52 +31,24 @@
 +--------+-----------+-----------------------------------+---------------+---------------------------------------------------+------------+
 
 */
+
 /*
-Route::get('/signup/confirm/{token}', 'UsersController@confirmEmail')->name('confirm_email');
-use Str;
+$table->string('activation_token')->nullable()
+$table->boolean('activated')->default(false)
+use Str
 public static function boot()
 {
-    parent::boot()
+    parent::boot();
     static::creating(function ($user){
-        $user->update([
-            'activation_token' => Str::random(10);
-        ])
+        $user->activation_token = Str::random(10);
     })
 }
-
-$this->sendEmail();
-session()->flash('info', '请去邮箱激活账号');
+$user = User::where('activation_token', $token)->firstOrFail();
+$user->update([
+    'activation_token' => null,
+    'activated' => true,
+]);
+Auth::login($user);
+session->flash()
 return redirect('/');
-
-use Mail;
-public function sendEmail($user)
-{
-    $view = 'emails.confirm';
-    $data = compact('user');
-    $from = 'xxx@qq.com';
-    $name = 'xxx';
-    $to = $user->email;
-    $subject = 'subject';
-
-    Mail::send($view, $data, function($message) use (){
-        $message->from($from, $name)->to($to)->subject($subject);
-    })
-}
-
-public function confirm_email($user)
-{
-    $user = User::where('activation_token', $token)->firstOrFail();
-    $user->update([
-        ''=> null,
-        ''=> true,
-    ]);
-    Auth::login($user);
-    success()->flash('','');
-    return redirect('/');
-}
-
-if($user->activated)
-else
-Auth::logout();
-
 */

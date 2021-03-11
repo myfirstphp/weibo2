@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
-
+use App\Models\User;
 
 class SessionsController extends Controller
 {
@@ -30,11 +30,12 @@ class SessionsController extends Controller
             'password' => 'required'
         ]);
 
-
         if(Auth::attempt($credentials, $request->has('remember')))
         {
+
             if(Auth::user()->activated)
             {
+
                 session()->flash('success','欢迎回来！');
                 $fallback = route('users.show', [Auth::user()->id]);
                 return redirect()->intended($fallback);

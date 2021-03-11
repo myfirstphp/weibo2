@@ -20,7 +20,7 @@
                                 {!! $statuses->render() !!}
                             </div>
                         @else
-                            <p>没有数据!</p>
+                            <p style="text-align:center">没有数据!</p>
                         @endif
                     </section>
                 </div>

@@ -7,6 +7,7 @@
             <div class="card-header"><h5>重置密码</h5></div>
 
             <div class="card-body">
+                <!--用来显示邮件发送成功的提示语-->
                 @if (session('status'))
                     <div class="alert alert-success">
                         {{ session('status') }}
