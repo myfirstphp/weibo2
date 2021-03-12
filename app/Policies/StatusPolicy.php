@@ -25,4 +25,9 @@ class StatusPolicy
     {
         return $user->id === $status->user_id;
     }
+
 }
+/*
+php artisan make:migration create_fans_table --create="fans"
+php artisan make:migration create_fans_table --create='fans'
+ */

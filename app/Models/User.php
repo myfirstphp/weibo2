@@ -50,15 +50,49 @@ class User extends Authenticatable
         return "http://www.gravatar.com/avatar/$hash?s=$size";
     }
 
-    //一对多
+    //一对多 文章表
     public function statuses()
     {
         return $this->hasMany('App\Models\Status');
     }
 
+    //多对多  获取粉丝
+    public function followers()
+    {
+        return $this->belongsToMany('App\Models\User','followers', 'user_id', 'follower_id');
+    }
+
+    //多对多  获取我关注的人
+    public function followings()
+    {
+        return $this->belongsToMany('App\Models\User','followers', 'follower_id', 'user_id');
+    }
     //返回文章
     public function feed()
     {
         return $this->statuses()->orderBy('created_at', 'desc');
+    }
+    //关注
+    public function follow($user_ids)
+    {
+        if(! is_array($user_ids))
+        {
+            $user_ids = compact('user_ids');
+        }
+        $this->followings()->sync($user_ids, false);
+    }
+    //取消关注
+    public function unfollow($user_ids)
+    {
+        if ( ! is_array($user_ids)) {
+            $user_ids = compact('user_ids');
+        }
+        $this->followings()->detach($user_ids);
+    }
+
+    //diagnose A是否关注了B
+    public function isFollowing($user_id)
+    {
+        return $this->followings()->contains($user_id);
     }
 }
